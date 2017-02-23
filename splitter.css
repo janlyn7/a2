@@ -27,16 +27,18 @@ p {
 label {
   font-size: 22px;
   padding-top: 2px;
-  height: 20px
+  height: 22px
 }
 
 #round_check {
   font-size: 16px;
-  padding-top: 7px;
-  height: 20px
+  padding-top: 8px;
+  height: 22px
 }
 
-#text,
+label,
+#amount_label,
+#npeople_label,
 #calc_button {
   text-align: right;
 }
@@ -57,7 +59,7 @@ input[type=submit] {
 #results {
   text-align: center;
   background: #D5F5FF;
-  padding: 20px 30px 25px 30px;
+  padding: 35px 30px 20px 30px;
 }
 
 #errors {

@@ -25,7 +25,7 @@ require('splitter.php');
                     </div>
 	            <div class='six columns' id='page_title'>
              	        <h2> Split the Check</h2>
-	 	    </div>
+                    </div>
                 </div>
 
 
@@ -38,11 +38,11 @@ require('splitter.php');
                 ?>
 
                 <div class='row'>
-                    <div class='six columns' id='text'>
+                    <div class='six columns' id='amount_label'>
                         <label>Bill Amount: </label>
                         <p>Required*</p>
                     </div>
-                    <div class='six columns' id='field'>
+                    <div class='six columns'>
                         <input type='text' name='totalBill' value='<?=$_GET["totalBill"]?>'>
                     </div>
                 </div>
@@ -55,12 +55,13 @@ require('splitter.php');
                         $_GET['numPeople'] = $form->sanitize($_GET['numPeople']);
                     }
                 ?>
+
                 <div class='row'>
-                    <div class='six columns' id='text'>
+                    <div class='six columns' id='npeople_label'>
                         <label>Number of People:</label>
                         <p>Required*</p>
                     </div>
-                    <div class='six columns' id='field'>
+                    <div class='six columns'>
                         <input type='text' name='numPeople' value='<?=$_GET["numPeople"]?>'>
                     </div>
                 </div>
@@ -73,7 +74,7 @@ require('splitter.php');
                 ?>
 
                 <div class='row'> 
-                    <div class='six columns' id='text'>
+                    <div class='six columns'>
                         <label for='tip'>Quality of Service:</label>
                     </div>
                     <div class='six columns' id='service_menu'>
@@ -94,7 +95,7 @@ require('splitter.php');
                 ?>
 
                 <div class='row'>
-                    <div class='six columns' id='text'>
+                    <div class='six columns'>
                         <label> Round Up:</label>
                     </div>
                     <div class='six columns' id='round_check'>
@@ -111,35 +112,34 @@ require('splitter.php');
                     </div>
                 </div>
 
-                <?php
-                    if (isset($_GET['calc'])) {
-                        if ( isset($ppBill) ){
- 			    echo "<div id='row'>";
-			    echo "    <div class='three columns'><p></p></div>";
-                            echo "    <div class='six columns' id='results'>";
-                            echo "        <br/><h4>Each person pays $".$ppBill."</h4>" ;
-			    echo "    </div>";
- 			    echo "</div>"; 
 
-                       } else if (isset($errors)) {
- 			    echo "<div id='row'>";
-			    echo "    <div class='three columns'><p></p></div>";
-                            echo "    <div class='six columns' id='errors'>";
-                            echo "        <h5>Errors:</h5>";
-                            echo "        <ul>";
-                            foreach($errors as $errmsg):
-                                echo "            <li>".$errmsg."</li>";
-                            endforeach;
-                            echo "        </ul>";
-			    echo "    </div>";
- 			    echo "</div>"; 
-                        }
-                    }
-                    if (isset($_GET['reset'])) {
-                        unset($_SERVER['QUERY_STRING']);
-                    }
-                ?>
-            </form>
-        </div>
+                <?php if (isset($_GET['calc']) && isset($ppBill)): ?>
+                    <div id='row'>
+                        <div class='three columns'>
+                            <p></p>
+                        </div>
+                        <div class='six columns' id='results'>
+                            <h4>Each person pays $<?=$ppBill?> </h4>
+                        </div>
+                    </div>
+
+                <?php elseif (isset($_GET['calc']) && isset($errors)): ?>
+                    <div id='row'>
+                        <div class='three columns'>
+                            <p></p>
+                        </div>
+                        <div class='six columns' id='errors'>
+                            <h5>Errors:</h5>
+                            <ul>
+                                <?php foreach($errors as $errmsg): ?>
+                                    <li><?=$errmsg?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+        </form>
     </body>
 </html>
