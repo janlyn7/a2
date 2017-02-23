@@ -78,7 +78,7 @@ require('splitter.php');
                         <label for='tip'>Quality of Service:</label>
                     </div>
                     <div class='six columns' id='service_menu'>
-                        <select name='tip'>
+                        <select name='tip' id='tip'>
                             <option value='poor'  <?php if ($_GET['tip'] == 'poor')  echo 'SELECTED';?>>Poor</option>
                             <option value='good'  <?php if ($_GET['tip'] == 'good')  echo 'SELECTED';?>>Good</option>
                             <option value='great' <?php if ($_GET['tip'] == 'great') echo 'SELECTED';?>>Great</option>
