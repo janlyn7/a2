@@ -43,7 +43,7 @@ require('splitter.php');
                         <p>Required*</p>
                     </div>
                     <div class='six columns'>
-                        <input type='text' name='totalBill' value='<?=$_GET["totalBill"]?>'>
+                        <input type='text' name='totalBill' autofocus required value='<?=$_GET["totalBill"]?>'>
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@ require('splitter.php');
                         <p>Required*</p>
                     </div>
                     <div class='six columns'>
-                        <input type='text' name='numPeople' value='<?=$_GET["numPeople"]?>'>
+                        <input type='text' name='numPeople' required value='<?=$_GET["numPeople"]?>'>
                     </div>
                 </div>
 
